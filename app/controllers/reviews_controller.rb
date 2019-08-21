@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :fetch_restaurant
-  def new
-    @review = Review.new
-  end
+  # def new
+  #   @review = Review.new
+  # end
 
   def create
     @review = Review.new(review_params)
@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @restaurant
     else
-      render :new
+      render "restaurants/show"
     end
   end
 
