@@ -1,0 +1,34 @@
+<h1>Add review for <%= @restaurant.name %></h1>
+
+<!-- POST /restaurants/4/reviews -->
+<%= simple_form_for [@restaurant, @review] do |f| %>
+
+  <%= f.error_notification %>
+
+  <% if @review.errors.any? %>
+    <div class="alert alert-danger">
+      <h3>Please fix these problems:</h3>
+      <ul>
+      <% @review.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-inputs">
+    <%= f.input :rating %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary mb-3' %>
+  </div>
+<% end %>
+
+<%= link_to @restaurant do %>
+  Go back to <strong><%= @restaurant.name %></strong>
+<% end %>
